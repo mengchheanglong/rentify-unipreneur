@@ -1,0 +1,23 @@
+# Local analysis renders, extracted references, and proofing images
+build/audit/
+build/archive/
+build/.codex-finalizer/
+build/node_modules/
+build/rendered*/
+build/*.png
+build/*.pptx
+build/pdf-check-*.png
+
+# One-time analysis utilities depend on local reference PDFs that are not tracked
+build/audit_sources.py
+build/render_audit_montages.py
+build/refine_v5.py
+build/update_team_images.py
+build/use_cropped_team_portraits.py
+
+# Local secrets and editor/OS metadata
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

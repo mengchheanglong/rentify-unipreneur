@@ -1,0 +1,65 @@
+[
+  {
+    "slide": 1,
+    "title": "Rentify",
+    "seconds": 20,
+    "script": "Rentify gives Cambodian merchants one place to manage their selling, with three ways to reach customers: their own storefront, our shared marketplace, and a point of sale at the counter. One catalog connects the business behind all three.",
+    "evidence": "Full product direction confirmed by the user. Do not imply that all shared transaction behavior is production ready."
+  },
+  {
+    "slide": 2,
+    "title": "One sale can leave three records out of step",
+    "seconds": 35,
+    "script": "Imagine a small shop that also sells online. The last item sells at the counter, but the online listing still says it is available. Now the owner has to update stock, find the order, and explain the mistake to a customer. This is the problem we want to solve: selling in more places should not mean maintaining more separate records. We will test how often this happens with our first merchant pilots.",
+    "evidence": "Illustrative scenario. The shopkeeper image is AI-generated, not an interviewed merchant. No interviews or measured problem frequency are verified."
+  },
+  {
+    "slide": 3,
+    "title": "One catalog connects every sale",
+    "seconds": 40,
+    "script": "Our full product puts the merchant at the center. They manage products, prices, stock, and orders once. Their personal storefront carries their brand. The shared marketplace gives buyers a place to discover different stores. The POS handles sales in the physical shop. The intended result is simple: when an item sells in one channel, its availability changes across the others. A merchant can begin with the marketplace and add a storefront as their business grows.",
+    "evidence": "Target product workflow. Marketplace-only stores and optional storefronts follow docs/platform-architecture.md. Cross-channel stock behavior remains a release validation task. Sources: C:/Users/User/rentify/README.md; C:/Users/User/rentify/docs/migration-plan.md."
+  },
+  {
+    "slide": 4,
+    "title": "The storefront, marketplace and POS experience",
+    "seconds": 35,
+    "script": "Here are the three interfaces. On the left is a merchant storefront. In the middle is Rentify Marketplace, where buyers can browse across sellers. On the right is our POS product preview, showing products, a cart, and a customer display. We have development interfaces running today. The next product milestone is to demonstrate a complete sale with consistent stock across all three channels.",
+    "evidence": "Storefront: local NexTech template at http://localhost:4600/. Marketplace: user-provided screenshot of http://localhost:4500/. POS: user-selected image from marketing site http://localhost:4200/; this is a product preview. Actual POS route is http://localhost:4400/pos. Prior browser review added a seeded product to a temporary POS cart; no sale was submitted. The hosted storefront product section was empty during that review. Do not claim that these images prove stock synchronization."
+  },
+  {
+    "slide": 5,
+    "title": "Target retailers sell online and in person",
+    "seconds": 25,
+    "script": "We will start with small Cambodian retailers who sell both online and at a physical counter. They already have customers and a stock management task we can observe. Cambodia's e-commerce market was reported at 1.51 billion US dollars in 2024. That gives us market context; our first practical target is ten suitable retailers.",
+    "evidence": "US$1.51B is reported 2024 Cambodian e-commerce market value, not Rentify revenue or TAM. Source: https://s2.moc.gov.kh/mocspace/mocspace_1744030861626.pdf ; corroborated 24 September 2026 at https://www.trade.gov/country-commercial-guides/cambodia-ecommerce . First 10 retailers is a proposed pilot target."
+  },
+  {
+    "slide": 6,
+    "title": "Where Rentify competes",
+    "seconds": 35,
+    "script": "Merchants already have alternatives. Khmer24 offers broad product discovery. Shopify connects online stores with POS. Khmum combines a local marketplace with merchant tools and POS. Rentify's focus is the small Cambodian retailer who wants their own brand, shared buyer discovery, and counter sales in one workflow. We will compare how much work it takes to set up and operate, how reliably stock updates, and what the merchant pays.",
+    "evidence": "Public descriptions checked 24 September 2026. Sources: https://www.khmer24.com/en ; https://www.shopify.com/pos ; https://www.khmersme.gov.kh/service_provider/khmum-technology-co-ltd/ . Khmum has overlapping capabilities. No first/only/cheapest/best claim or measured advantage is supported."
+  },
+  {
+    "slide": 7,
+    "title": "Two ways Rentify earns revenue",
+    "seconds": 30,
+    "script": "Our business model follows the value we provide. Merchants subscribe to their personal storefront and POS tools. Rentify also earns a commission on completed orders through the shared marketplace. One stream supports daily operations; the other grows with marketplace sales. We will test prices and commission rates with merchants and against our support and payment costs before setting them.",
+    "evidence": "User's final business model is storefront/POS subscription plus marketplace commission. Pricing, rates, settlement, refund treatment and marketplace-only entitlements remain open. The repository's initial COD policy is not the intended final business model. Conversation.md is historical context, not a source of approved numerical prices."
+  },
+  {
+    "slide": 8,
+    "title": "Our launch plan: 10 retailers and their buyers",
+    "seconds": 40,
+    "script": "We will recruit the first ten retailers through shop visits and merchant referrals. We will help them set up their catalog and invite their existing customers through store links and social posts. This gives us a way to test both merchant adoption and buyer orders before spending heavily on advertising. We will measure setup time, stock accuracy, completed orders, repeat use, and willingness to pay. These are our planned pilots; we have no verified customer traction yet.",
+    "evidence": "Proposed acquisition experiment, not traction. No paid customers, merchant interviews, pilots, or revenue are verified. Merchant-shared links and social posts are suggested first buyer channels. Workshop source: Discuss..pdf, pages 2-3. Measure direct-store and marketplace orders separately."
+  },
+  {
+    "slide": 9,
+    "title": "The team behind Rentify",
+    "seconds": 25,
+    "script": "Our five-person team covers product development, business outreach, presenting, and operations. Through UniPreneur, we are asking for introductions to ten retailers who sell online and in person. We want to help them keep their brand, reach more buyers, and run their sales from one place. That is Rentify: one catalog, three ways to sell.",
+    "evidence": "Five team names and roles confirmed by the user. Long Mengchheng is Team Lead with product responsibilities; Hong Thanbrathna is Idea Founder with R&D support; Khemrak Pasey is Business Lead; Mom Sothireak is Pitch Lead; Vy Seoul supports R&D and team operations. Source: Rentify_Uniprenuer.pdf page 13. The introductions ask is a recommendation, not a funding request or existing partnership. Stop the timed pitch here."
+  }
+]
