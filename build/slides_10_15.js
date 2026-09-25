@@ -1,11 +1,11 @@
-// Slide 10 ("how we grow": go-to-market + roadmap merged) and appendix slide 15 (competitor evidence).
+// Appendix slide 14 ("how we grow": paying shops by year, Q&A backup for go-to-market) and appendix slide 15 (competitor evidence).
 // Run: node build/slides_10_15.js
 const path = require('path');
 const pptxgen = require('pptxgenjs');
 const sharp = require('./node_modules/sharp');
 const lucide = require('./node_modules/lucide');
 
-const ROOT = 'C:/Users/User/Downloads/rentify-national-challenge';
+const ROOT = path.resolve(__dirname, '..');
 const DR = path.join(ROOT, 'output', 'drafts');
 require('fs').mkdirSync(DR, { recursive: true });
 
@@ -29,7 +29,7 @@ function setup() {
 }
 
 (async () => {
-  // ================= Slide 10: How we grow =================
+  // ================= Appendix slide 14: How we grow =================
   {
     const { pres, s, T, sh } = setup();
     s.background = { color: 'F8FAFC' };
@@ -61,10 +61,10 @@ function setup() {
 
     T('Paying shops = yearly average from the team’s financial model. Pilot passes if 7 of 10 shops stay active, stock is ≥99% accurate and 6 of 10 will pay.',
       0.6, 6.95, 12.1, 0.3, { size: 10, color: C.muted });
-    s.addNotes(`[3:20–3:45]
+    s.addNotes(`[Appendix — Q&A backup for the go-to-market slide]
 Here is our growth plan. We start now with ten pilot shops in Phnom Penh, found through shop visits and Facebook seller groups. In 2027 we launch publicly with KHQR payments and reach about 60 paying shops. In year two, shops bring their own buyers through their storefront links and we grow to about 420. In year three, referrals and partners take us to about 1,100. We break even at about 1,900 paying shops — only 3% of the stores we target.
 (Q&A: numbers are yearly averages from our model. The pilot passes if 7 of 10 shops stay active, stock stays 99% accurate, and 6 of 10 will pay. Marketplace commission starts when online payments launch.)`);
-    await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide10_grow.pptx') });
+    await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide14_grow.pptx') });
   }
 
   // ================= Appendix slide 15: Competitor evidence =================
