@@ -21,3 +21,8 @@ build/use_cropped_team_portraits.py
 !.env.example
 .DS_Store
 Thumbs.db
+
+# v6 QA renders and images extracted from the Canva v2 PDF
+build/v6/img/
+build/v6/*.png
+build/v6/*.pdf
