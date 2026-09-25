@@ -28,23 +28,25 @@ const hdr = (t, al = 'left') => ({ text: t, options: { bold: true, color: C.whit
     const pres = deck(); const s = pres.addSlide(); s.background = { color: 'F8FAFC' };
     const { T, sh } = helpers(pres, s);
     T('Three-year projection', 0.6, 0.35, 12.13, 0.7, { size: 32, bold: true, align: 'center' });
-    T('Base case: subscriptions only, 5 founders on equity, after VAT and taxes · commission is upside', 0.6, 1.0, 12.13, 0.4, { size: 15, color: C.muted, align: 'center' });
+    T('Bootstrapped: team unpaid in Year 1, then paid from profit · subscriptions only', 0.6, 1.0, 12.13, 0.4, { size: 15, color: C.muted, align: 'center' });
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.55, y: 1.6, w: 7.55, h: 5.0, rectRadius: 0.2, fill: { color: C.white }, line: { color: C.line, width: 1 }, shadow: sh() });
     s.addChart(pres.charts.BAR, [
-      { name: 'Revenue', labels: ['Year 1', 'Year 2', 'Year 3'], values: [3142, 22846, 61586] },
-      { name: 'Total cost', labels: ['Year 1', 'Year 2', 'Year 3'], values: [11212, 28611, 57535] },
+      { name: 'Running costs + tax', labels: ['Year 1', 'Year 2', 'Year 3'], values: [2905, 6734, 16251] },
+      { name: 'Team pay (from profit)', labels: ['Year 1', 'Year 2', 'Year 3'], values: [0, 9426, 26741] },
+      { name: 'Kept in the company', labels: ['Year 1', 'Year 2', 'Year 3'], values: [236, 6687, 18594] },
     ], {
-      x: 0.75, y: 1.75, w: 7.15, h: 4.7, barDir: 'col', barGapWidthPct: 60,
-      chartColors: [C.teal, 'C7D2E0'], showLegend: true, legendPos: 'b', legendFontSize: 12, legendFontFace: F,
-      showValue: true, dataLabelPosition: 'outEnd', dataLabelFormatCode: '$#,##0', dataLabelFontSize: 11, dataLabelFontFace: F,
-      dataLabelColor: C.ink, catAxisLabelFontSize: 13, catAxisLabelFontFace: F, catAxisLabelColor: C.ink,
+      x: 0.75, y: 1.75, w: 7.15, h: 4.7, barDir: 'col', barGrouping: 'stacked', barGapWidthPct: 55,
+      chartColors: ['64748B', C.blue, C.teal], showLegend: true, legendPos: 'b', legendFontSize: 12, legendFontFace: F,
+      showValue: true, dataLabelPosition: 'ctr', dataLabelFormatCode: '[>=1000]$#,##0;""', dataLabelFontSize: 11, dataLabelFontFace: F,
+      dataLabelColor: C.white, catAxisLabelFontSize: 13, catAxisLabelFontFace: F, catAxisLabelColor: C.ink,
       valAxisHidden: true, valGridLine: { style: 'none' }, catGridLine: { style: 'none' },
+      showTitle: true, title: 'Where each year\'s revenue goes', titleFontSize: 13, titleFontFace: F, titleColor: C.muted,
     });
     const K = [
       ['$61.6K', 'Year 3 revenue after 10% VAT', C.pale, C.ink, C.muted],
-      ['Year 3', 'first profit: +$4.1K', C.navy, C.white, C.mint],
-      ['~1,040', 'paying shops to break even (1.6% of our market)', 'DCFCE7', C.green, C.muted],
-      ['$13.8K', 'funding needed before profit', C.pale, C.ink, C.muted],
+      ['Year 1', 'covers its own costs, team unpaid', C.navy, C.white, C.mint],
+      ['~110', 'paying shops cover all running costs', 'DCFCE7', C.green, C.muted],
+      ['$1.1K', 'cash needed to start', C.pale, C.ink, C.muted],
     ];
     for (let i = 0; i < 4; i++) {
       const y = 1.6 + i * 1.28;
@@ -52,11 +54,11 @@ const hdr = (t, al = 'left') => ({ text: t, options: { bold: true, color: C.whit
       T(K[i][0], 8.65, y, 1.8, 1.12, { size: 26, bold: true, color: K[i][3] });
       T(K[i][1], 10.45, y, 2.2, 1.12, { size: 13, color: K[i][4] });
     }
-    T('Net result −$8.1K, −$5.8K, +$4.1K (Years 1–3). With 3% marketplace commission: −$7.8K, −$0.8K, +$19.9K. Includes 10% VAT, 1% tax prepayment, patent tax, NSSF and 14% withholding on foreign services. Full detail in appendix; all inputs to validate in the pilot.',
+    T('Team pay per founder: $0 → ~$150 → ~$420 a month (half of profit, max $500). With 3% commission the team reaches $500 in Year 3 and $27.0K is kept. After 10% VAT and Cambodian taxes. All inputs to validate in the pilot.',
       0.6, 6.85, 12.1, 0.45, { size: 9.5, color: C.muted, valign: 'top' });
     s.addNotes(`[4:00–4:18]
-We run lean: five founders who hold equity, AI-assisted development, and cloud servers that cost about 50 dollars a month at launch. Counting subscriptions only and after VAT and taxes, revenue reaches 62,000 dollars in Year 3 and we turn profitable that year, breaking even at about 1,040 paying shops — under 2% of the stores we target. With a 3% marketplace commission, Year 3 profit rises to about 20,000 dollars.
-(Q&A: founders take a small allowance, $100 rising to $500 a month. We need about $13.8K before we turn profitable — prize money, grants and savings. Taxes: 10% VAT is included in our $5 price; 20% profit tax only once past losses are used up. Model: docs/rentify-financial-model.xlsx.)`);
+We are bootstrapped. Five founders do everything themselves, with AI-assisted development and servers that cost about 50 dollars a month. About 110 paying shops cover all our running costs, so Rentify pays for itself from Year 1. We work unpaid that year, then pay ourselves from profit: about 150 dollars a month each in Year 2 and 420 in Year 3, while still keeping 18,600 dollars in the company. Marketplace commission is upside on top.
+(Q&A: rule = half of each year's profit goes to the team, capped at $500 per founder; the rest is reserve. Marketing is 10% of revenue; growth is founder-led. We need about $1.1K to start: registration and pilot servers. About 765 paying shops would pay all five of us the full $500. Model: docs/rentify-financial-model.xlsx.)`);
     await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide12_projection.pptx') });
   }
 
@@ -88,23 +90,24 @@ We run lean: five founders who hold equity, AI-assisted development, and cloud s
   {
     const pres = deck(); const s = pres.addSlide(); s.background = { color: C.white };
     const { T } = helpers(pres, s);
-    T('Financial detail (bottom-up model)', 0.6, 0.4, 12.1, 0.7, { size: 30, bold: true });
+    T('Financial detail (bootstrapped model)', 0.6, 0.4, 12.1, 0.7, { size: 30, bold: true });
     const b = (t, al = 'right') => ({ text: t, options: { bold: true, align: al, fill: { color: C.pale } } });
     const r = (t) => ({ text: t, options: { align: 'right' } });
     s.addTable([
       [hdr('US$'), hdr('Year 1', 'right'), hdr('Year 2', 'right'), hdr('Year 3', 'right'), hdr('Assumption')],
       ['Subscription revenue', r('3,142'), r('22,846'), r('61,586'), 'Paying shops 58 → 419 → 1,129 × $5 plan; 10% VAT removed'],
       ['Cost of service', r('687'), r('1,569'), r('3,013'), 'Servers, database, storage, email ($50 → $225 / month) + 14% withholding'],
-      [b('Gross profit', 'left'), b('2,454'), b('21,277'), b('58,573'), { text: '', options: { fill: { color: C.pale } } }],
-      ['Team', r('6,360'), r('19,080'), r('38,520'), '5 founders on equity, $100 → $500 / month allowance; support hire in Year 3; NSSF'],
-      ['Sales & marketing', r('1,626'), r('5,465'), r('10,718'), 'Facebook ads $100 → $600 / month, QR stands, festival campaigns, referral credit'],
-      ['Software, office, legal', r('2,508'), r('2,268'), r('4,668'), 'AI tools, registration (~$840), accountant, coworking, patent tax $300 / yr'],
-      ['Tax on profit', r('31'), r('229'), r('616'), '1% monthly prepayment; 20% profit tax only after past losses are used'],
-      [b('Net result', 'left'), b('–8,071'), b('–5,764'), b('4,051'), { text: 'Base case: subscriptions only', options: { fill: { color: C.pale } } }],
-      ['With 3% commission', r('–7,843'), r('–789'), r('19,879'), 'Half of shops get 2 → 4 marketplace orders / month at $15'],
+      ['Sales & marketing', r('472'), r('2,646'), r('6,869'), '10% of revenue + referral credits; growth is founder-led'],
+      ['Software, office, legal', r('1,687'), r('847'), r('1,721'), 'Shared AI tools, registration (~$840), patent tax; no office rent'],
+      [b('Profit before team pay', 'left'), b('295'), b('17,784'), b('49,983'), { text: 'Team works for equity until this is positive', options: { fill: { color: C.pale } } }],
+      ['Team pay (incl. NSSF)', r('0'), r('9,426'), r('26,741'), 'Unpaid in Year 1; then half of profit, max $500 / founder / month'],
+      ['Tax on profit', r('59'), r('1,672'), r('4,648'), '1% monthly prepayment; 20% profit tax'],
+      [b('Kept in the company', 'left'), b('236'), b('6,687'), b('18,594'), { text: 'Reserve for growth and bad months', options: { fill: { color: C.pale } } }],
+      ['Pay per founder / month', r('$0'), r('~$148'), r('~$417'), '5 founders, all doing product, sales and support'],
+      ['With 3% commission: kept', r('399'), r('8,349'), r('27,018'), 'Team reaches the $500 cap in Year 3'],
     ], { x: 0.6, y: 1.35, w: 12.13, colW: [2.6, 1.3, 1.3, 1.3, 5.63], fontFace: F, fontSize: 13, color: C.ink,
-      border: { type: 'solid', pt: 0.75, color: 'D7E1ED' }, rowH: 0.5, valign: 'middle', margin: 0.08 });
-    T('Break-even: about 1,040 paying shops at Year-3 costs (1.6% of the 65,433-store SAM). Funding needed before profit: about $13.8K. Founders take low pay until the business grows. Tax rules and prices checked Sept 2026; confirm with an accountant. Model: docs/rentify-financial-model.xlsx.',
+      border: { type: 'solid', pt: 0.75, color: 'D7E1ED' }, rowH: 0.46, valign: 'middle', margin: 0.08 });
+    T('About 110 paying shops cover running costs; about 765 would pay all 5 founders $500 / month (1.2% of the 65,433-store SAM). Cash needed to start: about $1.1K. Tax rules and prices checked Sept 2026; confirm with an accountant. Model: docs/rentify-financial-model.xlsx.',
       0.6, 6.85, 12.1, 0.45, { size: 10, color: C.muted, valign: 'top' });
     s.addNotes('Figures from docs/rentify-financial-model.xlsx (build/financial_model.py). Paying-shop numbers are unchanged from the team 36-month model; costs are rebuilt bottom-up. All inputs are assumptions to validate in the pilot.');
     await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide17_financial-detail.pptx') });

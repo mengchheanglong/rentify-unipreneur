@@ -83,7 +83,7 @@ def line(name, label, values, fmt=USD, note="", inp=False, bold=False, key=False
     row += 1
 
 
-title("Rentify - three-year financial model (bottom-up, v3, Sept 2026)")
+title("Rentify - three-year financial model (bootstrapped, v4, Sept 2026)")
 ws.cell(row=row, column=1, value="Blue = input you can change. Black = formula. Yellow = key assumption to test in the pilot. "
         "Years start with the public launch in 2027; the Q4 2026 pilot is covered by Year 1 costs.").font = Font(name=F, italic=True)
 row += 1
@@ -118,36 +118,35 @@ line("email", "Transactional email (Resend)", [0, 20, 20], USD2, inp=True, note=
 line("lb", "Load balancer", [0, 0, 12], USD2, inp=True, note="Estimate for a small DigitalOcean load balancer once two app servers share traffic.")
 line("domain", "Domain and DNS", [1.25, 1.25, 1.25], USD2, inp=True, note="About $15/year. SSL is free (Let's Encrypt). Merchants buy their own custom domains.")
 
-section("INPUTS - team")
-line("founders", "Founders (whole team)", [5, 5, 5], NUM, inp=True, note="All 5 team members hold equity and take the same small allowance.")
-line("allow", "Founder allowance ($/founder/month)", [100, 300, 500], USD, inp=True, key=True,
-     note="Founders hold equity, so pay is low: transport and phone in Y1, then a small allowance. Cambodia's 2026 garment minimum wage is $210/month for reference. Up to KHR 1.5M (~$375)/month is free of salary tax; above that the employee pays 5%+ (withheld, not a company cost).")
-line("staff", "Onboarding/support staff (people)", [0, 0, 1], NUM, inp=True, note="Founders do onboarding and support until Year 3.")
-line("salary", "Staff salary ($/month)", [500, 500, 500], USD, inp=True, note="Cambodian customer-support roles are reported at about $450-900/month.")
-line("nssf", "Employer social security (NSSF, % of pay)", [0.06, 0.06, 0.07], PCT, inp=True, note="Occupational risk, health care and pension contributions paid by the employer; the pension share rises from 2027. Approximate.")
+section("INPUTS - team (paid from profit)")
+line("founders", "Founders (whole team)", [5, 5, 5], NUM, inp=True, note="All 5 team members hold equity and do everything themselves: product, sales, onboarding, support. No hires in Years 1-3.")
+line("payshare", "Share of profit paid to the team", [0, 0.5, 0.5], PCT, inp=True, key=True,
+     note="Bootstrapped rule: the team works unpaid until there is profit, then takes half of each year's profit (before team pay) and keeps the other half as reserve. Many bootstrapped founders start at $0 and stay under ~$1,000/month for years (Pilot founder salary report; Practical Founders).")
+line("paycap", "Maximum pay per founder ($/month)", [500, 500, 500], USD, inp=True,
+     note="Cap, so extra profit is reinvested. Up to KHR 1.5M (~$375)/month is free of salary tax; above that the employee pays 5% (withheld, not a company cost).")
+line("nssf", "Employer social security (NSSF, % of pay)", [0.06, 0.06, 0.07], PCT, inp=True, note="Occupational risk, health care and pension contributions paid by the employer on team pay; the pension share rises from 2027. Approximate.")
 
-section("INPUTS - sales and marketing")
-line("ads", "Facebook ads ($/month)", [100, 300, 600], USD, inp=True, note="Assumption: small targeted budget that grows with the business.")
-line("print", "Printed QR stands and flyers ($/year)", [200, 500, 800], USD, inp=True, note="Assumption.")
-line("events", "Festival and category campaigns ($/year)", [0, 500, 1000], USD, inp=True, note="Assumption, e.g. Khmer New Year campaigns.")
+section("INPUTS - sales and marketing (limited budget)")
+line("mkt", "Marketing budget (% of revenue)", [0.1, 0.1, 0.1], PCT, inp=True, key=True,
+     note="Spend only what revenue allows: ads, printed QR stands, festival campaigns. Growth is founder-led (shop visits, Facebook groups, referrals), so this sits below the 20-40% that early bootstrapped SaaS firms often spend on marketing.")
+line("print", "Minimum launch materials ($/year)", [100, 0, 0], USD, inp=True, note="Printed QR stands and flyers for the first pilot shops, before revenue exists.")
 line("refcredit", "Referral credit per referred paying shop ($)", [5, 5, 5], USD, inp=True, note="One month free for the shop that refers another.")
 line("refshare", "Share of new paying shops that come by referral", [0.2, 0.2, 0.2], PCT, inp=True, note="Assumption.")
 
 section("INPUTS - software, office, legal and tax")
-line("ai", "AI tools ($/founder/month)", [20, 20, 20], USD, inp=True, note="Claude Pro or ChatGPT Plus, about $20/month each. Code hosting (GitHub) and design tools use free plans.")
+line("aisubs", "Shared AI tool subscriptions (number)", [2, 2, 3], NUM, inp=True, note="The team shares a few accounts instead of one each.")
+line("ai", "AI tool price ($/subscription/month)", [20, 20, 20], USD, inp=True, note="Claude Pro or ChatGPT Plus, about $20/month. Code hosting (GitHub) and design tools use free plans.")
 line("reg", "Company registration (one-off)", [840, 0, 0], USD, inp=True,
-     note="Ministry of Commerce fee about KHR 2,155,000 (~$540) plus ~$300 notary/legal help. Year 1 only.")
-line("books", "Bookkeeping and tax filing ($/month)", [0, 50, 100], USD, inp=True, note="Founders in Y1; outsourced accountant from Y2 (assumption).")
-line("office", "Coworking desk ($/month)", [0, 0, 150], USD, inp=True, note="Remote/university space until Year 3 (assumption).")
+     note="Ministry of Commerce fee about KHR 2,155,000 (~$540) plus ~$300 notary/legal help. Needed before online payments (2027).")
+line("books", "Bookkeeping and tax filing ($/month)", [0, 0, 50], USD, inp=True, note="Founders keep the books in Years 1-2; a part-time accountant from Year 3 (proper records also avoid the 1% minimum tax).")
+line("office", "Office ($/month)", [0, 0, 0], USD, inp=True, note="No rent: home, university, or free startup space such as Techo Startup Center in Phnom Penh.")
 line("vatreg", "VAT-registered (1 = yes)", [1, 1, 1], NUM, inp=True, key=True, note="VAT is compulsory above KHR 250M (~$62,500) turnover a year; Rentify passes that in Year 3. A company holding customer payments will likely register from the start, so this is on from Year 1 (conservative).")
 line("vat", "VAT rate (included in our prices)", [0.1, 0.1, 0.1], PCT, inp=True, note="10% VAT is charged on sales and passed to the government; it is not a tax on profit. Prices stay $5 incl. VAT, so Rentify keeps $5 / 1.1 = $4.55. VAT we pay on costs can be reclaimed, so costs are shown without VAT.")
 line("ptax", "Tax on profit", [0.2, 0.2, 0.2], PCT, inp=True, note="20% for companies (medium/large taxpayers). Losses carried forward. IT startups may get a 2-5 year exemption (SME Sub-decree 124, MSME incentives); not assumed here.")
 line("mintax", "Prepayment of profit tax (% of revenue)", [0.01, 0.01, 0.01], PCT, inp=True,
      note="1% of monthly turnover, credited against profit tax. In loss years it is treated as a cost (conservative). The separate 1% minimum tax does not apply to companies that keep proper accounts.")
 line("patent", "Patent tax (annual business tax, $)", [300, 300, 300], USD, inp=True, note="KHR 1.2M (~$300) a year for a medium taxpayer. Small enterprises can be exempt for 2 years.")
-line("wht", "Withholding tax on foreign services", [0.14, 0.14, 0.14], PCT, inp=True, note="14% on payments to non-resident suppliers (servers, AI tools, Facebook ads), assumed paid by Rentify on top (conservative).")
-line("mktsalary", "Market salary check ($/founder/month)", [1000, 1000, 1000], USD, inp=True,
-     note="Used only in the sensitivity row: what if all 5 founders were paid a typical Phnom Penh developer salary (~$1,000-1,400/month)?")
+line("wht", "Withholding tax on foreign services", [0.14, 0.14, 0.14], PCT, inp=True, note="14% on payments to non-resident suppliers (servers, AI tools), assumed paid by Rentify on top (conservative).")
 
 # ---------------- Calculations ----------------
 section("CALCULATIONS")
@@ -157,24 +156,30 @@ line("newpaying", "New paying shops in the year", ["=@paying", "=@paying-B{p}".f
 line("gmv", "Marketplace sales through Rentify (GMV)", ["=(@paying+@free)*@share*@orders*@aov*@months"] * 3, USD,
      note="Sales value of marketplace orders, not Rentify revenue.")
 line("infra", "Infrastructure cost incl. withholding tax ($/year)", ["=(@vps+@db+@storage+@backup+@email+@lb+@domain)*12*(1+@wht)"] * 3, USD)
+line("netprice", "Subscription Rentify keeps per shop ($/year, excl. VAT)", ["=@price*12/(1+@vat*@vatreg)"] * 3, USD2)
+line("solc", "Software, office, legal, patent tax ($/year)", ["=@aisubs*@ai*12*(1+@wht)+@reg+@books*12+@office*12+@patent"] * 3, USD)
+line("capyr", "Team pay cap ($/year)", ["=@founders*@paycap*12"] * 3, USD)
 
 section("P&L - BASE CASE (subscriptions only)")
-line("sub", "Subscription revenue (excl. VAT)", ["=@paying*@price*12/(1+@vat*@vatreg)"] * 3, USD, note="Customers pay $5 incl. VAT; the VAT part goes to the government.")
+line("sub", "Subscription revenue (excl. VAT)", ["=@paying*@netprice"] * 3, USD, note="Customers pay $5 incl. VAT; the VAT part goes to the government.")
 line("cos", "Cost of service (infrastructure)", ["=@infra"] * 3, USD)
 line("gp", "Gross profit", ["=@sub-@cos"] * 3, USD, bold=True)
-line("team", "Team (incl. NSSF)", ["=(@founders*@allow*12+@staff*@salary*12)*(1+@nssf)"] * 3, USD)
-line("sm", "Sales & marketing", ["=@ads*12*(1+@wht)+@print+@events+@newpaying*@refshare*@refcredit"] * 3, USD)
-line("sol", "Software, office, legal, patent tax", ["=@ai*@founders*12*(1+@wht)+@reg+@books*12+@office*12+@patent"] * 3, USD)
-line("ebit", "Result before tax", ["=@gp-@team-@sm-@sol"] * 3, USD, bold=True)
-line("cumebit", "Cumulative result before tax", ["=@ebit", "=B{r}+@ebit", "=C{r}+@ebit"], USD)
+line("sm", "Sales & marketing", ["=@mkt*@sub+@print+@newpaying*@refshare*@refcredit"] * 3, USD)
+line("sol", "Software, office, legal, patent tax", ["=@solc"] * 3, USD)
+line("pbt", "Profit before team pay", ["=@gp-@sm-@sol"] * 3, USD, bold=True, note="What the business earns while the team works for equity.")
+line("pay", "Team pay (from profit)", ["=MIN(@capyr,@payshare*MAX(0,@pbt))"] * 3, USD)
+line("team", "Team cost incl. NSSF", ["=@pay*(1+@nssf)"] * 3, USD)
+line("ebit", "Result before tax", ["=@pbt-@team"] * 3, USD, bold=True)
+line("cumebit", "Cumulative result before tax", ["=@ebit"] * 3, USD)
 ws.cell(row=ref["cumebit"], column=3).value = f"=B{ref['cumebit']}+C{ref['ebit']}"
 ws.cell(row=ref["cumebit"], column=4).value = f"=C{ref['cumebit']}+D{ref['ebit']}"
 line("tax", "Tax on profit", ["=MAX(@mintax*@sub,@ptax*MAX(0,MIN(@ebit,@cumebit)))"] * 3, USD,
      note="Higher of the 1% prepayment and 20% profit tax; profit tax only on profit left after earlier losses.")
-line("net", "Net result", ["=@ebit-@tax"] * 3, USD, bold=True, key=True)
-line("cumnet", "Cumulative net result", ["=@net", "=@net", "=@net"], USD)
+line("net", "Net result (kept in the company)", ["=@ebit-@tax"] * 3, USD, bold=True, key=True)
+line("cumnet", "Cumulative net result", ["=@net"] * 3, USD)
 ws.cell(row=ref["cumnet"], column=3).value = f"=B{ref['cumnet']}+C{ref['net']}"
 ws.cell(row=ref["cumnet"], column=4).value = f"=C{ref['cumnet']}+D{ref['net']}"
+line("permonth", "Pay per founder ($/month)", ["=@pay/@founders/12"] * 3, USD, bold=True)
 
 section("P&L - WITH 3% COMMISSION (upside scenario)")
 line("csub", "Subscription revenue", ["=@sub"] * 3, USD)
@@ -182,26 +187,27 @@ line("ccom", "Commission revenue (excl. VAT)", ["=@gmv*@rate/(1+@vat*@vatreg)"] 
 line("crev", "Total revenue", ["=@csub+@ccom"] * 3, USD)
 line("ccos", "Cost of service (infrastructure + payment cost)", ["=@infra+@gmv*@payfee"] * 3, USD)
 line("cgp", "Gross profit", ["=@crev-@ccos"] * 3, USD, bold=True)
-line("copex", "Operating costs (same as base)", ["=@team+@sm+@sol"] * 3, USD)
-line("cebit", "Result before tax", ["=@cgp-@copex"] * 3, USD, bold=True)
+line("csm", "Sales & marketing", ["=@mkt*@crev+@print+@newpaying*@refshare*@refcredit"] * 3, USD)
+line("cpbt", "Profit before team pay", ["=@cgp-@csm-@solc"] * 3, USD, bold=True)
+line("cpay", "Team pay (from profit)", ["=MIN(@capyr,@payshare*MAX(0,@cpbt))"] * 3, USD)
+line("cebit", "Result before tax", ["=@cpbt-@cpay*(1+@nssf)"] * 3, USD, bold=True)
 line("ccum", "Cumulative result before tax", ["=@cebit"] * 3, USD)
 ws.cell(row=ref["ccum"], column=3).value = f"=B{ref['ccum']}+C{ref['cebit']}"
 ws.cell(row=ref["ccum"], column=4).value = f"=C{ref['ccum']}+D{ref['cebit']}"
 line("ctax", "Tax on profit", ["=MAX(@mintax*@crev,@ptax*MAX(0,MIN(@cebit,@ccum)))"] * 3, USD)
-line("cnet", "Net result", ["=@cebit-@ctax"] * 3, USD, bold=True, key=True)
+line("cnet", "Net result (kept in the company)", ["=@cebit-@ctax"] * 3, USD, bold=True, key=True)
+line("cpermonth", "Pay per founder ($/month)", ["=@cpay/@founders/12"] * 3, USD, bold=True)
 
 section("KEY FIGURES")
-line("be", "Break-even paying shops (base case, that year's costs)",
-     ["=(@team+@sm+@sol+@cos)/(@price*12/(1+@vat*@vatreg))"] * 3, NUM,
-     note="Yearly fixed costs / yearly subscription per shop. Infrastructure is treated as fixed at this scale.")
-line("besam", "Break-even as share of SAM (65,433 stores)", ["=@be/65433"] * 3, PCT, note="NIS Economic Census 2022, ISIC 4741-4774.")
-line("funding", "Funding needed (largest cumulative loss, base case)",
-     [f"=-MIN(0,MIN($B${ref['cumnet']}:B{ref['cumnet']}))", f"=-MIN(0,MIN($B${ref['cumnet']}:C{ref['cumnet']}))",
-      f"=-MIN(0,MIN($B${ref['cumnet']}:D{ref['cumnet']}))"], USD, note="Cash the team must raise (prize money, grants, savings) before profits cover costs.")
-line("sens", "Sensitivity: net result if founders earned market salary",
-     ["=@net-@founders*(@mktsalary-@allow)*12*(1+@nssf)*(1-IF(@ebit>0,@ptax,0))"] * 3, USD,
-     note="Approximate: base-case net result with founder pay raised to the market-salary check. Shows the model does not depend on unpaid work forever.")
-
+line("be", "Paying shops needed to cover running costs",
+     ["=(@cos+@solc+@print+@newpaying*@refshare*@refcredit)/(@netprice*(1-@mkt))"] * 3, NUM,
+     note="Costs excluding team pay / what each paying shop leaves after marketing.")
+line("befull", "Paying shops needed to also pay every founder the cap",
+     ["=(@cos+@solc+@print+@newpaying*@refshare*@refcredit+@capyr*(1+@nssf))/(@netprice*(1-@mkt))"] * 3, NUM,
+     note="Shows when all 5 founders could take the full monthly cap.")
+line("besam", "...as share of SAM (65,433 stores)", ["=@befull/65433"] * 3, PCT, note="NIS Economic Census 2022, ISIC 4741-4774.")
+line("upfront", "Cash needed before first revenue", ["=@reg+@print+@infra/4", "=0", "=0"], USD,
+     note="Registration, launch materials and about 3 months of servers during the pilot; from savings or prize money.")
 ws.freeze_panes = "B2"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 wb.save(OUT)
