@@ -33,14 +33,14 @@ function setup() {
   {
     const { pres, s, T, sh } = setup();
     s.background = { color: 'F8FAFC' };
-    T('From 10 shops to break-even', 0.6, 0.35, 12.13, 0.7, { size: 32, bold: true, align: 'center' });
+    T('From 10 shops to profit', 0.6, 0.35, 12.13, 0.7, { size: 32, bold: true, align: 'center' });
 
     const steps = [
       ['NOW · Q4 2026', '10', 'pilot shops', 'Footprints', 'Shop visits, Facebook groups'],
       ['YEAR 1 · 2027', '~60', 'paying shops', 'Globe', 'Public launch + KHQR'],
       ['YEAR 2 · 2028', '~420', 'paying shops', 'Share2', 'Shops bring their buyers'],
       ['YEAR 3 · 2029', '~1,130', 'paying shops', 'Handshake', 'Referrals and partners'],
-      ['GOAL', '1,895', 'shops = break-even', 'Target', 'Only 3% of our market'],
+      ['YEAR 3 PROFIT', '+$22K', 'net result', 'Target', 'Break-even at ~670 shops'],
     ];
     const cw = 2.3, gap = 0.16, x0 = (13.333 - (5 * cw + 4 * gap)) / 2, ch = 2.3;
     // growth arrow behind the steps
@@ -62,7 +62,7 @@ function setup() {
     T('Paying shops = yearly average from the team’s financial model. Pilot passes if 7 of 10 shops stay active, stock is ≥99% accurate and 6 of 10 will pay.',
       0.6, 6.95, 12.1, 0.3, { size: 10, color: C.muted });
     s.addNotes(`[Appendix — Q&A backup for the go-to-market slide]
-Here is our growth plan. We start now with ten pilot shops in Phnom Penh, found through shop visits and Facebook seller groups. In 2027 we launch publicly with KHQR payments and reach about 60 paying shops. In year two, shops bring their own buyers through their storefront links and we grow to about 420. In year three, referrals and partners take us to about 1,100. We break even at about 1,900 paying shops — only 3% of the stores we target.
+Here is our growth plan. We start now with ten pilot shops in Phnom Penh, found through shop visits and Facebook seller groups. In 2027 we launch publicly with KHQR payments and reach about 60 paying shops. In year two, shops bring their own buyers through their storefront links and we grow to about 420. In year three, referrals and partners take us to about 1,100. We break even at about 670 paying shops — around 1% of the stores we target — so we turn profitable during Year 2.
 (Q&A: numbers are yearly averages from our model. The pilot passes if 7 of 10 shops stay active, stock stays 99% accurate, and 6 of 10 will pay. Marketplace commission starts when online payments launch.)`);
     await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide14_grow.pptx') });
   }

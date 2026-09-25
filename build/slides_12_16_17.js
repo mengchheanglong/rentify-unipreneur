@@ -4,7 +4,7 @@
 const path = require('path');
 const pptxgen = require('pptxgenjs');
 
-const ROOT = 'C:/Users/User/Downloads/rentify-national-challenge';
+const ROOT = path.resolve(__dirname, '..');
 const DR = path.join(ROOT, 'output', 'drafts');
 require('fs').mkdirSync(DR, { recursive: true });
 
@@ -28,11 +28,11 @@ const hdr = (t, al = 'left') => ({ text: t, options: { bold: true, color: C.whit
     const pres = deck(); const s = pres.addSlide(); s.background = { color: 'F8FAFC' };
     const { T, sh } = helpers(pres, s);
     T('Three-year projection', 0.6, 0.35, 12.13, 0.7, { size: 32, bold: true, align: 'center' });
-    T('Subscriptions only · marketplace commission not included', 0.6, 1.0, 12.13, 0.4, { size: 15, color: C.muted, align: 'center' });
+    T('Base case: subscriptions only, founders on equity · commission is upside', 0.6, 1.0, 12.13, 0.4, { size: 15, color: C.muted, align: 'center' });
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.55, y: 1.6, w: 7.55, h: 5.0, rectRadius: 0.2, fill: { color: C.white }, line: { color: C.line, width: 1 }, shadow: sh() });
     s.addChart(pres.charts.BAR, [
       { name: 'Revenue', labels: ['Year 1', 'Year 2', 'Year 3'], values: [3456, 25131, 67744] },
-      { name: 'Total cost', labels: ['Year 1', 'Year 2', 'Year 3'], values: [30258, 61879, 93819] },
+      { name: 'Total cost', labels: ['Year 1', 'Year 2', 'Year 3'], values: [7255, 19039, 45607] },
     ], {
       x: 0.75, y: 1.75, w: 7.15, h: 4.7, barDir: 'col', barGapWidthPct: 60,
       chartColors: [C.teal, 'C7D2E0'], showLegend: true, legendPos: 'b', legendFontSize: 12, legendFontFace: F,
@@ -42,9 +42,9 @@ const hdr = (t, al = 'left') => ({ text: t, options: { bold: true, color: C.whit
     });
     const K = [
       ['$67.7K', 'Year 3 revenue', C.pale, C.ink, C.muted],
-      ['1,895', 'paying shops to break even', C.navy, C.white, C.mint],
-      ['2.9%', 'of our 65,400-store market', 'DCFCE7', C.green, C.muted],
-      ['$5', 'average plan (Starter $5, Pro $10)', C.pale, C.ink, C.muted],
+      ['Year 2', 'first profit: +$6.1K', C.navy, C.white, C.mint],
+      ['~670', 'paying shops to break even (1% of our market)', 'DCFCE7', C.green, C.muted],
+      ['$3.8K', 'funding needed before profit', C.pale, C.ink, C.muted],
     ];
     for (let i = 0; i < 4; i++) {
       const y = 1.6 + i * 1.28;
@@ -52,11 +52,11 @@ const hdr = (t, al = 'left') => ({ text: t, options: { bold: true, color: C.whit
       T(K[i][0], 8.65, y, 1.8, 1.12, { size: 26, bold: true, color: K[i][3] });
       T(K[i][1], 10.45, y, 2.2, 1.12, { size: 13, color: K[i][4] });
     }
-    T('Team 36-month model, lean cost base. Net result −$26.8K, −$36.7K, −$26.1K (Years 1–3). Prices, conversion, churn and costs are assumptions to validate in the pilot.',
+    T('Net result −$3.8K, +$6.1K, +$22.1K (Years 1–3). With 3% marketplace commission: −$3.5K, +$10.6K, +$38.4K. Costs priced bottom-up (DigitalOcean, Resend, MoC fees); shop numbers from the team model. Full detail in appendix; all inputs to validate in the pilot.',
       0.6, 6.85, 12.1, 0.45, { size: 9.5, color: C.muted, valign: 'top' });
     s.addNotes(`[4:00–4:18]
-Our lean model counts subscriptions only. Revenue grows to 68,000 dollars in Year 3. We break even at about 1,900 paying shops — under 3% of the 65,000 specialised stores we target. Marketplace commission, once online payments launch, is upside on top.
-(Q&A: the $5 average is conservative — Starter is $5 and Pro is $10; Free-plan shops pay no subscription and are not counted as paying. All inputs will be updated with pilot data.)`);
+We run lean: three founders who hold equity, AI-assisted development, and cloud servers that cost about 50 dollars a month at launch. Counting subscriptions only, revenue reaches 68,000 dollars in Year 3, we turn profitable in Year 2, and we break even at about 670 paying shops — around 1% of the stores we target. Marketplace commission is upside on top.
+(Q&A: founders take a small allowance, $100 rising to $500 a month; even at a $1,000 market salary, Year 3 is still about +$7.7K. We need about $3.8K before we turn profitable. Model: docs/rentify-financial-model.xlsx.)`);
     await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide12_projection.pptx') });
   }
 
@@ -88,24 +88,25 @@ Our lean model counts subscriptions only. Revenue grows to 68,000 dollars in Yea
   {
     const pres = deck(); const s = pres.addSlide(); s.background = { color: C.white };
     const { T } = helpers(pres, s);
-    T('Financial detail (team model, lean scenario)', 0.6, 0.4, 12.1, 0.7, { size: 30, bold: true });
+    T('Financial detail (bottom-up model)', 0.6, 0.4, 12.1, 0.7, { size: 30, bold: true });
     const b = (t, al = 'right') => ({ text: t, options: { bold: true, align: al, fill: { color: C.pale } } });
     const r = (t) => ({ text: t, options: { align: 'right' } });
     s.addTable([
       [hdr('US$'), hdr('Year 1', 'right'), hdr('Year 2', 'right'), hdr('Year 3', 'right'), hdr('Assumption')],
-      ['Subscription revenue', r('3,456'), r('25,131'), r('67,744'), 'Starter $5 / Pro $10; $5 average per paying shop; Free plan pays none'],
-      ['Commission revenue', r('0'), r('0'), r('0'), 'Not modelled; starts with online marketplace payments (2027)'],
-      ['Cost of service', r('1,543'), r('8,939'), r('21,669'), '$0.30 per active + $0.75 per paying shop / month'],
-      [b('Gross profit', 'left'), b('1,913'), b('16,193'), b('46,074'), { text: '', options: { fill: { color: C.pale } } }],
-      ['Team', r('20,250'), r('35,300'), r('46,000'), 'Founders, lean hiring path'],
-      ['Sales & marketing', r('4,110'), r('10,450'), r('16,450'), 'Field onboarding, referrals, paid ads'],
-      ['Software, office, legal', r('4,355'), r('7,190'), r('9,700'), 'Fixed lean overhead'],
-      [b('Net result', 'left'), b('–26,802'), b('–36,747'), b('–26,076'), { text: 'No tax while loss-making', options: { fill: { color: C.pale } } }],
+      ['Subscription revenue', r('3,456'), r('25,131'), r('67,744'), 'Paying shops 58 → 419 → 1,129 (team model) × $5 average plan'],
+      ['Cost of service', r('603'), r('1,376'), r('2,643'), 'Servers, database, photo storage, email: $50 → $225 / month'],
+      [b('Gross profit', 'left'), b('2,853'), b('23,755'), b('65,101'), { text: '', options: { fill: { color: C.pale } } }],
+      ['Team', r('3,600'), r('10,800'), r('24,000'), '3 founders on equity, $100 → $500 / month allowance; 1 support hire in Year 3'],
+      ['Sales & marketing', r('1,458'), r('4,961'), r('9,710'), 'Facebook ads $100 → $600 / month, QR stands, festival campaigns, referral credit'],
+      ['Software, office, legal', r('1,560'), r('1,320'), r('3,720'), 'AI tools, company registration (~$840), accountant, coworking in Year 3'],
+      ['Tax', r('35'), r('582'), r('5,534'), '1% minimum tax; 20% profit tax after earlier losses'],
+      [b('Net result', 'left'), b('–3,799'), b('6,092'), b('22,137'), { text: 'Base case: subscriptions only', options: { fill: { color: C.pale } } }],
+      ['With 3% commission', r('–3,543'), r('10,563'), r('38,395'), 'Half of shops get 2 → 4 marketplace orders / month at $15'],
     ], { x: 0.6, y: 1.35, w: 12.13, colW: [2.6, 1.3, 1.3, 1.3, 5.63], fontFace: F, fontSize: 13, color: C.ink,
-      border: { type: 'solid', pt: 0.75, color: 'D7E1ED' }, rowH: 0.52, valign: 'middle', margin: 0.08 });
-    T('Break-even: about 1,895 paying shops (Month-36 operating cost ÷ contribution per shop) — 2.9% of the 65,433-store SAM. All inputs are assumptions to validate in the pilot.',
+      border: { type: 'solid', pt: 0.75, color: 'D7E1ED' }, rowH: 0.5, valign: 'middle', margin: 0.08 });
+    T('Break-even: about 670 paying shops at Year-3 costs (1.0% of the 65,433-store SAM). If founders earned $1,000 / month, Year 3 would still be about +$7.7K. Prices: DigitalOcean, Resend, Ministry of Commerce, checked Sept 2026. Model: docs/rentify-financial-model.xlsx.',
       0.6, 6.85, 12.1, 0.45, { size: 10, color: C.muted, valign: 'top' });
-    s.addNotes('Figures from the team 36-month model (lean cost base) as shown in the v2 deck; only the assumption labels were updated for the Free / Starter / Pro pricing.');
+    s.addNotes('Figures from docs/rentify-financial-model.xlsx (build/financial_model.py). Paying-shop numbers are unchanged from the team 36-month model; costs are rebuilt bottom-up. All inputs are assumptions to validate in the pilot.');
     await pres.writeFile({ fileName: path.join(DR, 'Rentify_v6_slide17_financial-detail.pptx') });
   }
   console.log('done');
