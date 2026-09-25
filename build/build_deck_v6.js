@@ -80,23 +80,10 @@ function fitImg(slide, file, px, py, bx, by, bw, bh, o = {}) {
   // =============== 1. COVER ===============
   {
     const s = pres.addSlide(); s.background = { color: C.navy };
-    img(s, 'rentify-logo.png', 0.7, 0.6, 0.75, 0.75, { alt: 'Rentify logo' });
-    T(s, 'Rentify', 1.6, 0.72, 5, 0.6, { size: 30, bold: true, color: C.white });
-    T(s, 'Sell everywhere.\nManage once.', 0.7, 2.0, 7.6, 2.3, { size: 60, bold: true, color: C.white, lsm: 0.95 });
-    T(s, 'One store behind your own website, a shared marketplace and your shop counter — built for Cambodian merchants.',
-      0.7, 4.45, 6.9, 0.9, { size: 19, color: C.lightTeal, lsm: 1.1 });
-    const chips = [['Globe', 'Own storefront'], ['ShoppingBag', 'Shared marketplace'], ['Store', 'In-store POS']];
-    for (let i = 0; i < 3; i++) {
-      const x = 0.7 + i * 2.5;
-      box(s, x, 5.75, 2.35, 0.62, C.navy2, { round: true, r: 0.31 });
-      s.addImage({ data: await icon(chips[i][0], C.teal), x: x + 0.2, y: 5.9, w: 0.32, h: 0.32 });
-      T(s, chips[i][1], x + 0.6, 5.75, 1.72, 0.62, { size: 13.5, color: C.white, valign: 'middle' });
-    }
-    // right: three real screens stacked
-    box(s, 7.72, 0.95, 5.06, 2.9, C.white, { round: true, r: 0.08 });
-    img(s, 'v6/crop-marketplace.png', 7.8, 1.03, 4.9, 2.74, { alt: 'Rentify Marketplace product page' });
-    box(s, 8.42, 3.62, 4.36, 2.55, C.white, { round: true, r: 0.08, shadow: true });
-    img(s, 'v6/crop-pos.png', 8.5, 3.7, 4.2, 2.39, { alt: 'Rentify POS screen' });
+    // Minimal cover: logo, name, tagline only
+    img(s, 'rentify-logo.png', (W - 1.6) / 2, 1.55, 1.6, 1.6, { alt: 'Rentify logo' });
+    T(s, 'Rentify', 0, 3.35, W, 1.0, { size: 60, bold: true, color: C.white, align: 'center' });
+    T(s, 'Sell everywhere. Manage once.', 0, 4.45, W, 0.6, { size: 26, color: C.lightTeal, align: 'center' });
     s.addNotes(`[0:00–0:15]
 Cambodian merchants sell in many places — Facebook, marketplaces and their own shop counter. Rentify lets them sell everywhere and manage once.`);
   }
@@ -104,26 +91,31 @@ Cambodian merchants sell in many places — Facebook, marketplaces and their own
   // =============== 2. PROBLEM ===============
   {
     const s = pres.addSlide(); s.background = { color: C.white };
-    title(s, 'Merchants have tools. None of them connect.');
-    const rows = [
-      ['MessageCircle', 'Facebook page', 'posts, Live and inbox'],
-      ['Send', 'Telegram', 'customer orders'],
-      ['LayoutGrid', 'Marketplace listing', 'a second copy of products'],
-      ['NotebookPen', 'Notebook or Excel', 'the “real” stock count'],
-      ['Calculator', 'Cash box or POS app', 'counter sales'],
+    T(s, 'One merchant. Six places to keep in sync.', 0.6, 0.4, 12.13, 0.7, { size: 32, bold: true, align: 'center' });
+    // merchant in the middle
+    const px = 4.95, py = 1.35, pw = 3.43, ph = 4.75;
+    box(s, px - 0.08, py - 0.08, pw + 0.16, ph + 0.16, 'FDE2E2', { round: true, r: 0.2 });
+    img(s, 'v6/merchant-portrait.png', px, py, pw, ph, { alt: 'Shopkeeper frowning at her phone at a cluttered counter', rounding: false });
+    // tools around her, each with its pain point
+    const bubbles = [
+      ['MessageCircle', 'Facebook page', '“Still says in stock”', 0.6, 1.45],
+      ['Send', 'Telegram', 'Orders buried in chats', 0.6, 3.2],
+      ['LayoutGrid', 'Marketplace listing', 'Old price, old stock', 0.6, 4.95],
+      ['NotebookPen', 'Notebook', 'Which count is right?', 9.13, 1.45],
+      ['Calculator', 'Cash box', 'Just sold the last one', 9.13, 3.2],
+      ['User', 'Customer', '“Where is my order?”', 9.13, 4.95],
     ];
-    for (let i = 0; i < rows.length; i++) {
-      const y = 1.6 + i * 0.78;
-      box(s, 0.6, y, 5.9, 0.64, C.pale, { round: true, r: 0.1 });
-      await iconDot(s, rows[i][0], 0.72, y + 0.1, 0.44, C.lightBlue, C.blue);
-      T(s, rows[i][1], 1.32, y, 2.55, 0.64, { size: 16, bold: true, valign: 'middle' });
-      T(s, rows[i][2], 3.95, y, 2.5, 0.64, { size: 14, color: C.muted, valign: 'middle' });
+    for (const [ic, name, pain, x, y] of bubbles) {
+      const left = x < 5;
+      // dashed connector to the merchant
+      s.addShape(pres.shapes.LINE, { x: left ? x + 3.6 : px + pw + 0.08, y: y + 0.55, w: left ? px - 0.08 - (x + 3.6) : x - (px + pw + 0.08), h: 0,
+        line: { color: 'E08A8A', width: 1.5, dashType: 'dash' } });
+      box(s, x, y, 3.6, 1.1, C.pale, { round: true, r: 0.14, line: 'F2C4C4', lw: 1 });
+      await iconDot(s, ic, x + 0.2, y + 0.25, 0.6, C.white, C.red);
+      T(s, name, x + 0.95, y + 0.17, 2.55, 0.38, { size: 16, bold: true });
+      T(s, pain, x + 0.95, y + 0.55, 2.55, 0.38, { size: 14, color: C.red, italic: true });
     }
-    T(s, 'Every new channel adds another list to update by hand.', 0.6, 5.62, 5.9, 0.9, { size: 20, bold: true, color: C.blue, lsm: 1.05 });
-    img(s, 'merchant-problem-illustration.png', 6.95, 1.6, 5.78, 3.25, { alt: 'Illustration of a shopkeeper checking her phone at a counter' });
-    box(s, 6.95, 5.0, 5.78, 1.5, C.navy, { round: true, r: 0.1 });
-    T(s, 'The last item sells at the counter.\nFacebook still says “in stock”.', 7.2, 5.12, 5.3, 0.8, { size: 17, bold: true, color: C.white, lsm: 1.05 });
-    T(s, 'Result: an apology, a refund, a lost customer.', 7.2, 5.95, 5.3, 0.4, { size: 14, color: C.lightTeal });
+    T(s, 'One sale at the counter makes every other list wrong.', 0.6, 6.3, 12.13, 0.5, { size: 20, bold: true, color: C.blue, align: 'center' });
     foot(s, 'Illustrative scenario and AI-generated image. How often this happens will be measured in our first merchant pilots.', false, 2);
     s.addNotes(`[0:15–0:40]
 But their tools don't connect. Orders arrive on Telegram, stock lives in a notebook, and cash sits at the counter. So when the last item sells in the shop, Facebook still says it's in stock. The result is an apology, a refund and a lost customer.

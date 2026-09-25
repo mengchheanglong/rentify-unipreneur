@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" width="1200" height="1440">
+  <!-- scribble of confusion above the head -->
+  <path d="M232 92 C 260 40, 330 30, 360 70 C 390 110, 300 130, 290 90 C 280 50, 380 40, 400 85 C 420 130, 320 140, 268 110 C 220 80, 300 20, 345 55 C 380 85, 250 120, 240 80"
+        fill="none" stroke="#3A3F4B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- body / shirt -->
+  <path d="M150 720 C 150 560, 200 470, 300 465 C 400 470, 450 560, 450 720 Z" fill="#2A3B63"/>
+  <!-- apron -->
+  <path d="M215 720 L 228 540 C 260 555, 340 555, 372 540 L 385 720 Z" fill="#3E6FA8"/>
+  <path d="M232 548 C 250 500, 262 480, 268 470 M368 548 C 350 500, 338 480, 332 470" stroke="#3E6FA8" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <rect x="268" y="600" width="64" height="44" rx="8" fill="#2F5A8C"/>
+  <!-- neck -->
+  <path d="M272 420 L 272 470 C 285 482, 315 482, 328 470 L 328 420 Z" fill="#E7B48F"/>
+  <!-- arms up to the head -->
+  <path d="M190 520 C 140 470, 135 380, 175 300" stroke="#2A3B63" stroke-width="58" fill="none" stroke-linecap="round"/>
+  <path d="M410 520 C 460 470, 465 380, 425 300" stroke="#2A3B63" stroke-width="58" fill="none" stroke-linecap="round"/>
+  <!-- hair back -->
+  <path d="M190 300 C 170 180, 230 130, 300 130 C 370 130, 430 180, 410 300 C 420 360, 400 400, 380 410 L 220 410 C 200 400, 180 360, 190 300 Z" fill="#231C24"/>
+  <!-- face -->
+  <ellipse cx="300" cy="300" rx="98" ry="112" fill="#F0C29E"/>
+  <!-- messy fringe -->
+  <path d="M205 262 C 215 190, 260 172, 300 175 C 345 172, 392 195, 396 262 C 370 228, 350 214, 330 222 C 318 204, 292 200, 280 222 C 258 212, 228 228, 205 262 Z" fill="#231C24"/>
+  <path d="M250 180 C 230 140, 200 150, 185 125 M330 176 C 350 130, 390 140, 405 112 M300 172 C 300 130, 280 118, 290 95" stroke="#231C24" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <!-- hands clutching the head -->
+  <g fill="#E7B48F">
+    <ellipse cx="200" cy="268" rx="36" ry="46"/>
+    <ellipse cx="400" cy="268" rx="36" ry="46"/>
+    <path d="M178 235 q-6 -34 14 -40 M196 228 q-2 -40 18 -40 M214 232 q6 -34 22 -30" stroke="#E7B48F" stroke-width="15" stroke-linecap="round" fill="none"/>
+    <path d="M422 235 q6 -34 -14 -40 M404 228 q2 -40 -18 -40 M386 232 q-6 -34 -22 -30" stroke="#E7B48F" stroke-width="15" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- worried brows -->
+  <path d="M245 262 L 285 272" stroke="#231C24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M355 262 L 315 272" stroke="#231C24" stroke-width="8" stroke-linecap="round"/>
+  <!-- squeezed eyes -->
+  <path d="M250 300 L 280 292 L 250 284" stroke="#231C24" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M350 300 L 320 292 L 350 284" stroke="#231C24" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- blush -->
+  <ellipse cx="248" cy="330" rx="18" ry="10" fill="#E88F8F" opacity="0.55"/>
+  <ellipse cx="352" cy="330" rx="18" ry="10" fill="#E88F8F" opacity="0.55"/>
+  <!-- grimace mouth -->
+  <path d="M268 360 C 285 342, 315 342, 332 360 C 315 380, 285 380, 268 360 Z" fill="#7A2E35"/>
+  <path d="M276 356 L 324 356" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+  <!-- sweat drops -->
+  <path d="M440 210 C 452 228, 456 240, 446 248 C 436 254, 426 244, 432 232 Z" fill="#6FB3E8"/>
+  <path d="M158 190 C 168 205, 170 216, 162 222 C 154 226, 146 218, 150 208 Z" fill="#6FB3E8"/>
+  <!-- stress marks -->
+  <path d="M470 150 l 30 -20 M480 185 l 38 -4 M125 150 l -30 -20 M115 185 l -38 -4" stroke="#D64545" stroke-width="7" stroke-linecap="round"/>
+</svg>
