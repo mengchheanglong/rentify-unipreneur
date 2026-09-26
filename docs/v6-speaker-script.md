@@ -1,70 +1,99 @@
-# Rentify v6 speaker script
+# Rentify pitch script
 
-This is the script for `output/Rentify_UniPreneur_Pitch_v6.pptx`, slides 1–13. It is about 470 words and targets a 4:45 finish. The same text is in each slide's speaker notes. Lines in *italics* are Q&A reminders; don't read them aloud.
+Deck: `output/Rentify_Uniprenuer.pptx`. Present slides 1–13 in about 4:45; slides 14+ are appendix for Q&A. The same text is in each slide's speaker notes (View → Notes, or Presenter View). *Italic* lines are Q&A reminders — do not read them aloud.
 
-| Slide | Topic | Finish by |
-| --- | --- | --- |
-| 1 | Cover | 0:15 |
-| 2 | Problem | 0:40 |
-| 3 | Every option solves one piece | 1:05 |
-| 4 | One store behind every channel | 1:25 |
-| 5 | What makes Rentify different | 1:50 |
-| 6 | Proof: one sale, updated everywhere | 2:15 |
-| 7 | Who we serve first | 2:35 |
-| 8 | Market | 2:58 |
-| 9 | How Rentify makes money | 3:20 |
-| 10 | Go-to-market | 3:45 |
-| 11 | Roadmap | 4:00 |
-| 12 | Three-year projection | 4:18 |
-| 13 | Team and ask | 4:45 |
+| # | Slide | Time |
+|---|---|---|
+| 1 | Cover | 0:00–0:15 |
+| 2 | Problem: too many places to update | 0:15–0:40 |
+| 3 | Today, a different tool for each piece | 0:40–1:00 |
+| 4 | Add a product once, live everywhere | 1:00–1:20 |
+| 5 | Demo video: one sale, updated everywhere | 1:20–1:45 |
+| 6 | What makes Rentify different | 1:45–2:10 |
+| 7 | Who we serve first | 2:10–2:30 |
+| 8 | Pricing: start free, upgrade when you grow | 2:30–2:55 |
+| 9 | A growing market | 2:55–3:20 |
+| 10 | Go-to-market | 3:20–3:45 |
+| 11 | Three-year projection | 3:45–4:05 |
+| 12 | Validator feedback (MOCK — replace) | 4:05–4:25 |
+| 13 | The team behind Rentify | 4:25–4:45 |
 
 ## 1. Cover (0:00–0:15)
-Cambodian merchants sell in many places — Facebook, marketplaces and their own shop counter. Rentify lets them sell everywhere and manage once.
 
-## 2. Problem (0:15–0:40)
-But their tools don't connect. Orders arrive on Telegram, stock lives in a notebook, and cash sits at the counter. So when the last item sells in the shop, Facebook still says it's in stock. The result is an apology, a refund and a lost customer.
+Cambodian merchants sell in many places — Facebook, marketplaces and their own shop. Rentify lets them sell everywhere and manage once.
 
-*Evidence: illustrative scenario. Replace with real merchant quotes once pilot conversations happen.*
+## 2. Problem: too many places to update (0:15–0:40)
 
-## 3. Every option solves one piece (0:40–1:05)
-Existing options each solve one piece. Marketplaces bring buyers but live apart from the merchant's shop. Shopify syncs a store and POS but has no Cambodian marketplace. Khmum is closest to us, and we respect it. Tesla wasn't the first electric car. We aim to be the platform merchants don't have to stitch together.
+But their tools don’t connect. Orders arrive on Telegram, products sit on Facebook and Khmer24, stock lives in a notebook, and sales happen on a separate POS. So when the last item sells at the counter, Facebook still says it’s in stock. The result: an apology, a refund, a lost customer.
 
-## 4. One store behind every channel (1:05–1:25)
-Rentify puts one store at the centre. Products, prices, stock and orders are entered once, then sold through the merchant's own storefront, our shared marketplace and our POS.
+*Q&A: Illustrative scenario and AI-generated image.*
 
-## 5. What makes Rentify different (1:25–1:50)
-Three ideas make us different. Start anywhere: sell on the marketplace first and add a storefront later without re-listing. One sale updates everywhere. And fair pricing: commission only on sales our marketplace brings, never on the merchant's own sales.
+## 3. Today, a different tool for each piece (0:40–1:00)
 
-## 6. Proof (1:50–2:15)
-This already works. Our demo store had forty units of this cream. We sold one at the counter. Seconds later, the storefront and the marketplace both showed thirty-nine. One sale, updated everywhere.
+Today merchants use a different tool for each piece: Facebook for their own page, Khmer24, VTENH or Smile Shop for a marketplace, and a POS app or cash box at the counter. Rentify brings all three onto one stock.
 
-*Q&A: seeded demo data in the development build, captured 25 Sep 2026 — not customer orders.*
+*Q&A: Khmum is the closest competitor — see the appendix.*
 
-## 7. Who we serve first (2:15–2:35)
-We start with two merchants: the Facebook seller, who begins on our marketplace, and the small shop, which begins with POS and a storefront. Our beachhead is Phnom Penh retailers in fashion, beauty, electronics and home goods.
+## 4. Add a product once, live everywhere (1:00–1:20)
 
-## 8. Market (2:35–2:58)
-Counting from the 2022 Economic Census, Cambodia has about 410,000 retail shops — a 24.6 million dollar subscription market. We focus on 65,000 specialised stores, worth 3.9 million a year, and aim for about 1,100 paying merchants by Year 3. Commission is on top.
+Here is how it works. The merchant adds a product once — name, price and stock. It appears on their own storefront, in our marketplace and in their POS. Same price, same stock, everywhere.
 
-*Q&A: US$1.51B is total 2024 e-commerce value — context, not our revenue.*
+## 5. Demo video: one sale, updated everywhere (1:20–1:45)
 
-## 9. How Rentify makes money (2:58–3:20)
-Merchants pay three, five or ten dollars a month for storefront, marketplace listing and POS. We add a commission only on marketplace orders, once buyers pay online in 2027. Their own storefront and counter sales stay commission-free.
+And it works today. Our demo store had forty bottles of this perfume. We sold one at the counter. Seconds later, the marketplace and the merchant dashboard both showed thirty-nine. One sale, updated everywhere.
 
-*Q&A: prices are proposals to test; commission cannot be deducted from cash on delivery.*
+*Q&A: Demo data in our development build, not customer orders.*
+
+## 6. What makes Rentify different (1:45–2:10)
+
+Three things make Rentify different. Start anywhere — begin on the marketplace and add a storefront and POS later, without re-listing. One stock everywhere, as you just saw. And fair pricing — nothing on the merchant’s own sales; we only earn when our marketplace brings the sale.
+
+*Q&A: Tesla wasn’t the first electric car either — we aim to be the platform merchants don’t have to stitch together.*
+
+## 7. Who we serve first (2:10–2:30)
+
+We serve two merchants first. The Facebook seller starts free on our marketplace. The small shop starts on Starter with a storefront and POS. We begin in Phnom Penh — home to one in five Cambodian businesses — with fashion and beauty, the two biggest online categories.
+
+## 8. Pricing: start free, upgrade when you grow (2:30–2:55) — speaker handover
+
+So what does it cost a merchant to start? **Nothing.** *(pause)* On our Free plan, any shop can sell on the Rentify Marketplace at no cost. We only take a tiny 3%, and only when our marketplace brings them a sale. No sale, no fee. When they’re ready for their own storefront and a POS at the counter, it’s five dollars a month, or ten for Pro. And on their own channels, they keep 100% of every sale. We only earn when our merchants earn.
+
+*Q&A: Prices and the 3% rate are proposals to test in the pilot. At launch orders are cash on delivery, so revenue is subscriptions; commission starts with online payments.*
+
+## 9. A growing market (2:55–3:20)
+
+The market is growing: Cambodian e-commerce was 1.51 billion dollars in 2024, up about 18% a year. Counting from the ground up, there are about 410,000 retail shops — a 22 million dollar subscription market. We focus on 65,000 specialised stores, and aim for about 1,100 paying shops by Year 3.
+
+*Q&A: $1.51B is total e-commerce sales value, not our revenue. Values use the $5 plan with 10% VAT removed.*
 
 ## 10. Go-to-market (3:20–3:45)
-We go merchants first. We recruit ten pilot shops through market visits, Facebook seller groups and UniPreneur introductions; their customers bring the first buyers. The pilot passes if seven of ten stay active, stock stays 99% accurate, and six of ten will pay.
 
-## 11. Roadmap (3:45–4:00)
-The platform works in development today. We pilot this quarter, launch publicly with KHQR payments in 2027, then add marketplace commission and multi-branch stock.
+We go merchants first. This quarter we bring ten pilot shops through market visits, Facebook groups and UniPreneur. In 2027 those shops bring their own customers through storefront links. Then buyers discover more shops in the marketplace — and more buyers bring more shops.
 
-## 12. Three-year projection (4:00–4:18)
-Our lean model counts subscriptions only. Revenue grows to 68,000 dollars in Year 3 and we break even at about 1,900 paying merchants. Commission is upside.
+*Q&A: Pilot passes if 7 of 10 shops stay active, stock is at least 99% accurate, and 6 of 10 will pay.*
 
-*Q&A: all inputs are assumptions to validate in the pilot.*
+## 11. Three-year projection (3:45–4:05)
 
-## 13. Team and ask (4:18–4:45)
-We are five students who have already built this platform. We ask UniPreneur for introductions to ten retailers, mentors in retail and payments, and support for our pilot. Rentify: sell everywhere, manage once. Thank you.
+We are bootstrapped. Year 1 covers its own costs with the team unpaid. Revenue grows to about 62,000 dollars in Year 3. About 110 paying shops cover all running costs, and we need only about 1,100 dollars to start.
 
-*Stop here. Keep this slide up for Q&A.*
+*Q&A: All inputs are assumptions to validate in the pilot. Detail in the appendix.*
+
+## 12. Validator feedback (MOCK — replace) (4:05–4:25)
+
+[MOCK — replace with what validators really said.] We have already spoken with merchants and an advisor. Here is what they told us.
+
+*Q&A: Do not present mock quotes as real feedback.*
+
+## 13. The team behind Rentify (4:25–4:45)
+
+We are five students who have already built this platform. Our next step is ten pilot shops in Phnom Penh, starting this quarter. Rentify: sell everywhere, manage once. Thank you.
+
+*Q&A: Stop here and keep this slide up for Q&A.*
+
+## Rehearsal
+
+The spoken script is about 502 words, roughly 4:15–4:45 aloud depending on pace. Time it at least twice on the presentation laptop, and play slide 5's video once in slideshow mode. Keep slide 13 on screen for Q&A and jump to the appendix only when a question calls for it.
+
+**If a judge asks "how can we help?":** introductions to shops that sell online and in store, and mentors in retail and payments.
+
+**If asked about commission:** 3% of the product price on completed marketplace orders, deducted from the payout once online payments launch; 0% on the merchant's own storefront and POS.

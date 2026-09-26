@@ -26,3 +26,9 @@ Thumbs.db
 build/v6/img/
 build/v6/*.png
 build/v6/*.pdf
+
+# scratch: unpacked decks, backups, temp renders
+build/v6/td/
+build/v6/dr/
+build/v6/*.pptx
+build/v6/imgserve/
